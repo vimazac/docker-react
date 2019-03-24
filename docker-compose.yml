@@ -1,0 +1,19 @@
+version: '3'
+services:
+  webapp:
+    build:
+      context: .  #the dot means the current directory, but if the projct would be inside a folder, then the name of the folder must be written
+      dockerfile: Dockerfile.dev 
+    ports: 
+      - "3001:3000"
+    volumes:
+      - /app/usr/node_modules #avoid making a reference for node-modules
+      - .:/app/usr/ #map the current local folder to the app/usr folder in the container
+  tests: #creates another container to run our tests and re running everytime a test is changed.
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/usr/node_modules
+      - .:/app/usr/
+    command: ["npm","run","test"]
