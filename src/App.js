@@ -9,7 +9,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and do docker compose fcsd to reload.
+            Edit <code>src/App.js</code> docker compose and travis yml.
           </p>
           <a
             className="App-link"
