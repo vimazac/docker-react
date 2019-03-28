@@ -4,4 +4,4 @@ services: #travis will install a copy of docker ready to go
 before_install:
   - docker build -t vz/docker-react -f Dockerfile.dev .
 script: #script when our tests need to be executed
-  - docker run vz/docker-test npm test -- --coverage
+  - docker run vz/docker-react npm test -- --coverage
