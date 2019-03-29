@@ -5,3 +5,15 @@ before_install:
   - docker build -t vz/docker-react -f Dockerfile.dev .
 script: #script when our tests need to be executed
   - docker run vz/docker-react npm test -- --coverage
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1" #change accordingly
+  app: "docker-react" #chaneg accordingly
+  env: "DockerReact-env" #change accordingly
+  bucket_name: "elasticbeanstalk-us-east-1-326725708761" #created automatically in S3
+  bucket_path: "docker-react" #same than docker app
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
